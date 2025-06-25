@@ -17,3 +17,14 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 $router->get('/hello', 'WelcomeController@hello');
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    // GET endpoint
+    $router->get('setoran', 'DataController@getSetoran');
+    
+    // POST endpoint (create)
+    $router->post('data', 'DataController@createData');
+    
+    // POST endpoint (delete)
+    $router->post('data/delete', 'DataController@deleteData');
+});
